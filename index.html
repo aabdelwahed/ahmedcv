@@ -1,0 +1,590 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Ahmed Abdelwahed — Cloud & Infrastructure Specialist and Microsoft Certified Trainer with 15+ years of experience across Azure, AWS, Google Cloud, enterprise infrastructure, security, DevOps, and technical enablement." />
+  <meta name="theme-color" content="#0b1020" />
+  <title>Ahmed Abdelwahed | Cloud & Infrastructure Specialist</title>
+  <style>
+    :root{
+      --bg:#07101d;
+      --panel:#0d1728;
+      --panel-2:#111f33;
+      --text:#eef4ff;
+      --muted:#9fb0c8;
+      --line:rgba(255,255,255,.10);
+      --accent:#67e8f9;
+      --accent-2:#60a5fa;
+      --accent-soft:rgba(103,232,249,.12);
+      --success:#86efac;
+      --shadow:0 20px 60px rgba(0,0,0,.32);
+      --radius:22px;
+      --max:1180px;
+    }
+    html[data-theme="light"]{
+      --bg:#f4f7fb;
+      --panel:#ffffff;
+      --panel-2:#f8fbff;
+      --text:#102033;
+      --muted:#5e6f86;
+      --line:rgba(16,32,51,.10);
+      --accent:#087f8c;
+      --accent-2:#2563eb;
+      --accent-soft:rgba(8,127,140,.09);
+      --success:#15803d;
+      --shadow:0 20px 55px rgba(29,55,88,.12);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(96,165,250,.11), transparent 34rem),
+        radial-gradient(circle at 90% 8%, rgba(103,232,249,.08), transparent 32rem),
+        var(--bg);
+      color:var(--text);
+      line-height:1.65;
+    }
+    a{color:inherit}
+    button,input{font:inherit}
+    button{cursor:pointer}
+    .container{width:min(var(--max),calc(100% - 32px));margin:auto}
+    .topbar{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter:blur(18px);
+      background:color-mix(in srgb,var(--bg) 78%,transparent);
+      border-bottom:1px solid var(--line);
+    }
+    .topbar .inner{
+      min-height:70px;display:flex;align-items:center;justify-content:space-between;gap:18px;
+    }
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-weight:800}
+    .brand-mark{
+      width:38px;height:38px;border-radius:12px;display:grid;place-items:center;
+      background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#03101a;
+      font-size:.88rem;letter-spacing:.04em;
+    }
+    .nav{display:flex;gap:6px;align-items:center}
+    .nav a{
+      text-decoration:none;color:var(--muted);font-size:.92rem;padding:9px 11px;border-radius:10px
+    }
+    .nav a:hover,.nav a.active{color:var(--text);background:var(--accent-soft)}
+    .icon-btn{
+      width:40px;height:40px;border:1px solid var(--line);border-radius:12px;
+      background:var(--panel);color:var(--text);display:grid;place-items:center
+    }
+    .hero{padding:88px 0 54px}
+    .hero-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:34px;align-items:stretch}
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:9px;
+      padding:7px 11px;border:1px solid var(--line);border-radius:999px;
+      color:var(--accent);background:var(--accent-soft);font-size:.83rem;font-weight:750
+    }
+    .status-dot{width:8px;height:8px;border-radius:50%;background:var(--success);box-shadow:0 0 18px var(--success)}
+    h1{
+      font-size:clamp(3rem,7vw,6.6rem);line-height:.92;letter-spacing:-.07em;
+      margin:22px 0 20px;max-width:900px
+    }
+    .gradient-text{
+      background:linear-gradient(90deg,var(--accent),var(--accent-2));
+      -webkit-background-clip:text;background-clip:text;color:transparent
+    }
+    .lead{font-size:clamp(1.05rem,1.7vw,1.28rem);color:var(--muted);max-width:780px;margin:0 0 28px}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:12px}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:9px;
+      border-radius:12px;padding:12px 16px;text-decoration:none;font-weight:750;border:1px solid var(--line)
+    }
+    .btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#04101e;border:none}
+    .btn.secondary{background:var(--panel);color:var(--text)}
+    .hero-card{
+      background:linear-gradient(180deg,color-mix(in srgb,var(--panel) 90%,transparent),var(--panel));
+      border:1px solid var(--line);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow);
+      display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden
+    }
+    .hero-card:before{
+      content:"";position:absolute;width:180px;height:180px;border-radius:50%;right:-70px;top:-65px;
+      background:radial-gradient(circle,var(--accent-soft),transparent 70%)
+    }
+    .avatar{
+      width:80px;height:80px;border-radius:24px;background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      display:grid;place-items:center;color:#05111c;font-size:1.6rem;font-weight:900;letter-spacing:.04em
+    }
+    .quick-meta{display:grid;gap:12px;margin-top:28px}
+    .meta-row{display:flex;justify-content:space-between;gap:20px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+    .meta-row span:first-child{color:var(--muted)}
+    .meta-row strong{text-align:right}
+    .stats{
+      display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:34px
+    }
+    .stat{
+      padding:20px;border:1px solid var(--line);background:var(--panel);border-radius:18px
+    }
+    .stat strong{display:block;font-size:2rem;letter-spacing:-.04em}
+    .stat span{color:var(--muted);font-size:.9rem}
+    section{padding:70px 0}
+    .section-head{display:flex;align-items:end;justify-content:space-between;gap:28px;margin-bottom:28px}
+    .section-kicker{color:var(--accent);text-transform:uppercase;letter-spacing:.14em;font-size:.78rem;font-weight:850}
+    h2{font-size:clamp(2rem,4vw,3.5rem);letter-spacing:-.045em;line-height:1.05;margin:6px 0 0}
+    .section-desc{max-width:580px;color:var(--muted)}
+    .skills-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+    .skill-card,.experience-card,.project-card,.cert-panel,.edu-card{
+      border:1px solid var(--line);background:var(--panel);border-radius:18px
+    }
+    .skill-card{padding:22px}
+    .skill-card h3{margin:0 0 12px;font-size:1.05rem}
+    .chips{display:flex;flex-wrap:wrap;gap:8px}
+    .chip{
+      padding:7px 10px;background:var(--panel-2);border:1px solid var(--line);
+      border-radius:999px;font-size:.84rem;color:var(--muted)
+    }
+    .timeline{position:relative;display:grid;gap:14px}
+    .experience-card{padding:24px}
+    .job-top{display:flex;justify-content:space-between;gap:20px;align-items:flex-start}
+    .job-title{margin:0;font-size:1.2rem}
+    .org{color:var(--accent);font-weight:750;margin-top:3px}
+    .period{white-space:nowrap;color:var(--muted);font-weight:650}
+    .experience-card ul{margin:16px 0 0;padding-left:20px;color:var(--muted)}
+    .experience-card li+li{margin-top:7px}
+    .projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+    .project-card{
+      padding:22px;transition:.25s transform,.25s border-color;position:relative
+    }
+    .project-card:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--accent) 50%,var(--line))}
+    .project-tag{font-size:.76rem;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);font-weight:850}
+    .project-card h3{margin:7px 0 8px;font-size:1.08rem}
+    .project-card p{margin:0;color:var(--muted)}
+    .toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 16px}
+    .filter-btn{
+      border:1px solid var(--line);background:var(--panel);color:var(--muted);
+      padding:9px 12px;border-radius:999px
+    }
+    .filter-btn.active{background:var(--accent-soft);color:var(--accent);border-color:color-mix(in srgb,var(--accent) 40%,var(--line))}
+    .cert-panel{padding:18px}
+    .cert-search{
+      width:100%;padding:13px 15px;border:1px solid var(--line);border-radius:12px;
+      color:var(--text);background:var(--panel-2);outline:none;margin-bottom:14px
+    }
+    .cert-search:focus{border-color:var(--accent)}
+    .cert-list{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+    .cert{
+      padding:13px 14px;border-radius:12px;background:var(--panel-2);border:1px solid var(--line);
+      display:flex;gap:10px;align-items:flex-start
+    }
+    .cert .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);margin-top:8px;flex:none}
+    .cert small{display:block;color:var(--muted);margin-top:2px}
+    .edu-card{padding:24px;display:flex;justify-content:space-between;gap:20px;align-items:center}
+    .contact-box{
+      border-radius:26px;padding:34px;border:1px solid var(--line);
+      background:
+        linear-gradient(135deg,rgba(103,232,249,.10),rgba(96,165,250,.08)),
+        var(--panel);
+      display:grid;grid-template-columns:1fr auto;gap:25px;align-items:center
+    }
+    .contact-box h2{margin:0 0 10px}
+    .contact-box p{margin:0;color:var(--muted);max-width:700px}
+    footer{padding:20px 0 40px;color:var(--muted);font-size:.9rem}
+    .footer-row{display:flex;justify-content:space-between;gap:16px;border-top:1px solid var(--line);padding-top:20px}
+    .reveal{opacity:0;transform:translateY(15px);transition:.55s ease}
+    .reveal.visible{opacity:1;transform:none}
+    .hidden{display:none!important}
+    .mobile-menu{display:none}
+    @media(max-width:900px){
+      .hero-grid{grid-template-columns:1fr}
+      .stats{grid-template-columns:repeat(2,1fr)}
+      .skills-grid,.projects-grid,.cert-list{grid-template-columns:1fr}
+      .nav{display:none}
+      .mobile-menu{display:grid}
+      .section-head{align-items:flex-start;flex-direction:column}
+      .contact-box{grid-template-columns:1fr}
+    }
+    @media(max-width:560px){
+      .hero{padding-top:58px}
+      h1{font-size:3.25rem}
+      .stats{grid-template-columns:1fr 1fr}
+      .stat{padding:16px}
+      .job-top,.edu-card{flex-direction:column}
+      .period{white-space:normal}
+      .hero-actions .btn{width:100%}
+      .footer-row{flex-direction:column}
+    }
+    @media print{
+      .topbar,.hero-actions,.toolbar,.cert-search,#themeToggle,.mobile-menu{display:none!important}
+      body{background:white;color:#111}
+      :root{--panel:#fff;--panel-2:#fff;--text:#111;--muted:#444;--line:#ddd;--accent:#0f6f78;--accent-2:#2563eb;--shadow:none}
+      section,.hero{padding:24px 0}
+      .hero-grid{grid-template-columns:1.4fr .6fr}
+      .reveal{opacity:1!important;transform:none!important}
+      .project-card,.experience-card,.skill-card,.cert,.edu-card,.hero-card{break-inside:avoid}
+      a{text-decoration:none}
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container inner">
+      <a class="brand" href="#top" aria-label="Back to top">
+        <span class="brand-mark">AA</span>
+        <span>Ahmed Abdelwahed</span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div style="display:flex;gap:8px">
+        <button class="icon-btn" id="themeToggle" title="Toggle color theme" aria-label="Toggle color theme">☼</button>
+        <button class="icon-btn mobile-menu" id="menuBtn" title="Open navigation" aria-label="Open navigation">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container">
+        <div class="hero-grid">
+          <div>
+            <div class="eyebrow"><span class="status-dot"></span> Cloud • Infrastructure • Training</div>
+            <h1>Ahmed<br><span class="gradient-text">Abdelwahed</span></h1>
+            <p class="lead">
+              Cloud &amp; Infrastructure Specialist and Microsoft Certified Trainer with 15+ years of hands-on experience
+              designing, operating, securing, and migrating enterprise infrastructure — plus 250+ delivered courses
+              focused on practical, job-ready skills across the Gulf region.
+            </p>
+            <div class="hero-actions">
+              <a class="btn primary" href="mailto:ahmed@abdelwahed.me">✉ Contact me</a>
+              <a class="btn secondary" href="https://www.linkedin.com/in/ahmedmct/" target="_blank" rel="noopener">LinkedIn ↗</a>
+              <a class="btn secondary" href="https://www.abdelwahed.me/" target="_blank" rel="noopener">Technical Blog ↗</a>
+              <button class="btn secondary" onclick="window.print()">Print / Save PDF</button>
+            </div>
+          </div>
+
+          <aside class="hero-card" aria-label="Quick profile">
+            <div>
+              <div class="avatar">AA</div>
+              <div class="quick-meta">
+                <div class="meta-row"><span>Based in</span><strong>Oman</strong></div>
+                <div class="meta-row"><span>Nationality</span><strong>Egyptian</strong></div>
+                <div class="meta-row"><span>Focus</span><strong>Cloud &amp; Enterprise Infrastructure</strong></div>
+                <div class="meta-row"><span>Training</span><strong>Microsoft Certified Trainer</strong></div>
+              </div>
+            </div>
+            <a class="btn secondary" style="margin-top:22px" href="https://www.credly.com/users/aabdelwahed/badges" target="_blank" rel="noopener">View Skill Badges ↗</a>
+          </aside>
+        </div>
+
+        <div class="stats" aria-label="Career highlights">
+          <div class="stat"><strong data-count="15" data-suffix="+">0</strong><span>Years of hands-on experience</span></div>
+          <div class="stat"><strong data-count="250" data-suffix="+">0</strong><span>Courses delivered</span></div>
+          <div class="stat"><strong data-count="3">0</strong><span>Major public clouds</span></div>
+          <div class="stat"><strong data-count="8">0</strong><span>Highlighted projects</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-kicker">Core Skills</div>
+            <h2>Built for hybrid, multi-cloud environments.</h2>
+          </div>
+          <p class="section-desc">A practical stack spanning architecture, systems administration, endpoint management, automation, security, and technical enablement.</p>
+        </div>
+
+        <div class="skills-grid">
+          <article class="skill-card reveal">
+            <h3>☁ Cloud Platforms</h3>
+            <div class="chips"><span class="chip">Microsoft Azure</span><span class="chip">AWS</span><span class="chip">Google Cloud</span><span class="chip">Architecture</span><span class="chip">Administration</span><span class="chip">Migration</span></div>
+          </article>
+          <article class="skill-card reveal">
+            <h3>🖥 Infrastructure</h3>
+            <div class="chips"><span class="chip">Windows Server</span><span class="chip">Active Directory</span><span class="chip">Exchange Server</span><span class="chip">Hyper-V</span><span class="chip">VMware vSphere</span><span class="chip">Red Hat Linux</span></div>
+          </article>
+          <article class="skill-card reveal">
+            <h3>💼 Modern Workplace</h3>
+            <div class="chips"><span class="chip">Microsoft 365</span><span class="chip">Exchange Online</span><span class="chip">Intune</span><span class="chip">SCCM</span><span class="chip">Entra ID</span><span class="chip">Hybrid Identity</span></div>
+          </article>
+          <article class="skill-card reveal">
+            <h3>⚙ DevOps &amp; Automation</h3>
+            <div class="chips"><span class="chip">Azure DevOps</span><span class="chip">CI/CD</span><span class="chip">Containers</span><span class="chip">PowerShell</span><span class="chip">Bash</span><span class="chip">Ansible</span></div>
+          </article>
+          <article class="skill-card reveal">
+            <h3>🛡 Security</h3>
+            <div class="chips"><span class="chip">Zero Trust</span><span class="chip">Microsoft Defender</span><span class="chip">Hardening</span><span class="chip">Conditional Access</span><span class="chip">Identity Security</span></div>
+          </article>
+          <article class="skill-card reveal">
+            <h3>🎓 Professional</h3>
+            <div class="chips"><span class="chip">Technical Training</span><span class="chip">Curriculum Development</span><span class="chip">Cloud Consulting</span><span class="chip">Root-Cause Analysis</span><span class="chip">Enablement</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-kicker">Professional Experience</div>
+            <h2>Infrastructure depth, translated into outcomes.</h2>
+          </div>
+        </div>
+
+        <div class="timeline">
+          <article class="experience-card reveal">
+            <div class="job-top">
+              <div><h3 class="job-title">Technical Trainer &amp; Cloud Infrastructure Specialist</h3><div class="org">OHI Group • Oman</div></div>
+              <div class="period">2019 — Present</div>
+            </div>
+            <ul>
+              <li>Deliver instructor-led training across Windows Server, Red Hat Linux, Exchange Server, Microsoft 365, Azure, AWS, VMware, DevOps, and AI/ML to enterprise and government clients — 250+ courses delivered.</li>
+              <li>Design real-world lab environments to improve learner retention and on-the-job readiness.</li>
+              <li>Advise clients on cloud architecture, hybrid identity, migration planning, and automation.</li>
+              <li>Continuously update course material to track platform changes across Microsoft, AWS, and Red Hat ecosystems.</li>
+            </ul>
+          </article>
+
+          <article class="experience-card reveal">
+            <div class="job-top">
+              <div><h3 class="job-title">System Administrator</h3><div class="org">Binzafrah Holding Group • Saudi Arabia</div></div>
+              <div class="period">2012 — 2019</div>
+            </div>
+            <ul>
+              <li>Designed and operated Linux and Windows Server infrastructure across multiple sites, maintaining 99%+ uptime on core services.</li>
+              <li>Administered Active Directory, DNS, DHCP, GPOs, WSUS, WDS, VPN, Hyper-V failover clustering, and NLB.</li>
+              <li>Managed Microsoft Azure, Microsoft 365, SCCM, and Intune for cloud services and endpoint management.</li>
+              <li>Hardened the network perimeter with SonicWALL firewalls and executed upgrades, migrations, and disaster-recovery drills with zero unplanned data-loss events.</li>
+            </ul>
+          </article>
+
+          <article class="experience-card reveal">
+            <div class="job-top">
+              <div><h3 class="job-title">Freelance Technical Trainer</h3><div class="org">YAT • Prince Sultan University • Integrated for Training</div></div>
+              <div class="period">2010 — 2019 • Part-time</div>
+            </div>
+            <ul><li>Delivered technical courses to students and IT professionals across Microsoft and Linux technology stacks in Egypt and Saudi Arabia.</li></ul>
+          </article>
+
+          <article class="experience-card reveal">
+            <div class="job-top">
+              <div><h3 class="job-title">System Administrator</h3><div class="org">ENERGYA METALS • Egypt</div></div>
+              <div class="period">2011 — 2012</div>
+            </div>
+            <ul><li>Administered Windows Server services including Active Directory, DHCP, DNS, WSUS, and WDS for day-to-day business operations.</li></ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-kicker">Selected Projects</div>
+            <h2>Hands-on architecture and implementation.</h2>
+          </div>
+          <p class="section-desc">Production-oriented projects covering resiliency, migration, hybrid infrastructure, security, and technical enablement.</p>
+        </div>
+
+        <div class="projects-grid">
+          <article class="project-card reveal"><div class="project-tag">Multi-Cloud</div><h3>Multi-Cloud Load Balancing</h3><p>Implemented live traffic distribution across AWS, Azure, and Google Cloud with health checks and automated failover for vendor-neutral high availability.</p></article>
+          <article class="project-card reveal"><div class="project-tag">Data Protection</div><h3>Multi-Cloud Backup Strategy</h3><p>Built encrypted, deduplicated backups across AWS S3, Azure Blob Storage, and Google Cloud Storage with scheduled jobs and verified restores.</p></article>
+          <article class="project-card reveal"><div class="project-tag">Training Program</div><h3>“Zero to Cloud” Career Program</h3><p>Designed and delivered an end-to-end learning path from networking and systems fundamentals through DevOps, Microsoft 365, and hands-on Azure migration.</p></article>
+          <article class="project-card reveal"><div class="project-tag">Virtualization</div><h3>VMware to Hyper-V Enterprise Migration</h3><p>Designed a complete migration methodology covering assessment, workload conversion, failover clustering, and cutover planning.</p></article>
+          <article class="project-card reveal"><div class="project-tag">Enterprise Infrastructure</div><h3>End-to-End Infrastructure Build</h3><p>Built an integrated on-premises platform from structured cabling, switching, and firewalls through AD, DNS/DHCP, Exchange, SCCM, virtualization, and Linux file services.</p></article>
+          <article class="project-card reveal"><div class="project-tag">Hybrid Cloud</div><h3>Hybrid Infrastructure Integration</h3><p>Integrated on-premises AD with Microsoft Entra ID and Exchange hybrid, unified endpoints with SCCM/Intune co-management, and connected networks to Azure.</p></article>
+          <article class="project-card reveal"><div class="project-tag">Security</div><h3>Microsoft Defender Security Suite</h3><p>Deployed Defender for Endpoint, Office 365, Identity, and Cloud Apps with attack surface reduction, anti-phishing policies, and Zero Trust access controls.</p></article>
+          <article class="project-card reveal"><div class="project-tag">Azure App Service</div><h3>Production WordPress Platform</h3><p>Deployed and operated a live Azure App Service workload with custom domain, TLS, performance tuning, and security hardening rated A+ on securityheaders.com.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="certifications">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-kicker">Certifications</div>
+            <h2>Cross-platform credentials.</h2>
+          </div>
+          <p class="section-desc">Filter by domain or search by credential name.</p>
+        </div>
+
+        <div class="toolbar reveal" id="filters">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="training">Training</button>
+          <button class="filter-btn" data-filter="cloud">Cloud / AI / DevOps</button>
+          <button class="filter-btn" data-filter="security">Security</button>
+          <button class="filter-btn" data-filter="infra">Infrastructure</button>
+        </div>
+
+        <div class="cert-panel reveal">
+          <input class="cert-search" id="certSearch" type="search" placeholder="Search certifications…" aria-label="Search certifications" />
+          <div class="cert-list" id="certList">
+            <div class="cert" data-cat="training"><span class="dot"></span><div>Microsoft Certified Trainer (MCT)<small>Training &amp; Enablement</small></div></div>
+            <div class="cert" data-cat="training"><span class="dot"></span><div>Microsoft Certified Innovative Educator<small>Training &amp; Enablement</small></div></div>
+            <div class="cert" data-cat="cloud"><span class="dot"></span><div>Azure Solutions Architect Expert<small>Microsoft</small></div></div>
+            <div class="cert" data-cat="cloud"><span class="dot"></span><div>DevOps Engineer Expert<small>Microsoft</small></div></div>
+            <div class="cert" data-cat="cloud"><span class="dot"></span><div>Microsoft 365 Enterprise Administrator Expert<small>Microsoft</small></div></div>
+            <div class="cert" data-cat="cloud"><span class="dot"></span><div>Azure Administrator Associate<small>Microsoft</small></div></div>
+            <div class="cert" data-cat="cloud"><span class="dot"></span><div>AWS Certified Solutions Architect – Associate<small>AWS</small></div></div>
+            <div class="cert" data-cat="cloud"><span class="dot"></span><div>Professional Cloud Architect<small>Google Cloud</small></div></div>
+            <div class="cert" data-cat="cloud"><span class="dot"></span><div>Azure AI Engineer Associate<small>Microsoft</small></div></div>
+            <div class="cert" data-cat="cloud"><span class="dot"></span><div>Azure Database Administrator Associate<small>Microsoft</small></div></div>
+            <div class="cert" data-cat="cloud"><span class="dot"></span><div>Power BI Data Analyst Associate<small>Microsoft</small></div></div>
+            <div class="cert" data-cat="security"><span class="dot"></span><div>Cybersecurity Architect Expert<small>Microsoft</small></div></div>
+            <div class="cert" data-cat="security"><span class="dot"></span><div>Security Operations Analyst Associate<small>Microsoft</small></div></div>
+            <div class="cert" data-cat="security"><span class="dot"></span><div>Azure Security Engineer Associate<small>Microsoft</small></div></div>
+            <div class="cert" data-cat="security"><span class="dot"></span><div>Cloud and AI Security Engineer Associate<small>Microsoft</small></div></div>
+            <div class="cert" data-cat="security"><span class="dot"></span><div>ITIL v3 Foundation<small>IT Service Management</small></div></div>
+            <div class="cert" data-cat="infra"><span class="dot"></span><div>Windows Server Hybrid Administrator Associate<small>Microsoft</small></div></div>
+            <div class="cert" data-cat="infra"><span class="dot"></span><div>MCSA: Windows Server 2012 &amp; 2016<small>Microsoft</small></div></div>
+            <div class="cert" data-cat="infra"><span class="dot"></span><div>MCSE: Productivity<small>Microsoft</small></div></div>
+            <div class="cert" data-cat="infra"><span class="dot"></span><div>MCSE: Messaging<small>Microsoft</small></div></div>
+            <div class="cert" data-cat="infra"><span class="dot"></span><div>VMware Certified Professional – Data Center Virtualization<small>VMware</small></div></div>
+            <div class="cert" data-cat="infra"><span class="dot"></span><div>Red Hat Certified System Administrator (RHCSA)<small>Red Hat</small></div></div>
+            <div class="cert" data-cat="infra"><span class="dot"></span><div>Linux Foundation Certified System Administrator (LFCS)<small>Linux Foundation</small></div></div>
+            <div class="cert" data-cat="infra"><span class="dot"></span><div>Cisco Certified Network Associate (CCNA)<small>Cisco</small></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="container">
+        <div class="section-head reveal">
+          <div><div class="section-kicker">Education</div><h2>Academic foundation.</h2></div>
+        </div>
+        <div class="edu-card reveal">
+          <div><strong>Bachelor of Marine Science</strong><div style="color:var(--muted)">University of Al-Azhar • Egypt</div></div>
+          <span class="chip">Grade: Very Good</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-box reveal">
+          <div>
+            <h2>Build, migrate, secure — or enable the team.</h2>
+            <p>Available for conversations around cloud infrastructure, hybrid environments, technical training, enablement, migration planning, and automation.</p>
+          </div>
+          <div class="hero-actions">
+            <a class="btn primary" href="mailto:ahmed@abdelwahed.me">ahmed@abdelwahed.me</a>
+            <button class="btn secondary" id="copyEmail">Copy email</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-row">
+      <span>© <span id="year"></span> Ahmed Abdelwahed</span>
+      <span>Cloud &amp; Infrastructure Specialist • Microsoft Certified Trainer</span>
+    </div>
+  </footer>
+
+  <script>
+    const root = document.documentElement;
+    const themeToggle = document.getElementById('themeToggle');
+    const savedTheme = localStorage.getItem('cv-theme');
+    if (savedTheme) root.dataset.theme = savedTheme;
+    themeToggle.textContent = root.dataset.theme === 'dark' ? '☼' : '☾';
+    themeToggle.addEventListener('click', () => {
+      root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('cv-theme', root.dataset.theme);
+      themeToggle.textContent = root.dataset.theme === 'dark' ? '☼' : '☾';
+    });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: .08 });
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    const counters = document.querySelectorAll('[data-count]');
+    const countObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        const target = Number(el.dataset.count);
+        const suffix = el.dataset.suffix || '';
+        let start = 0;
+        const duration = 900;
+        const started = performance.now();
+        function tick(now){
+          const p = Math.min((now-started)/duration,1);
+          const eased = 1-Math.pow(1-p,3);
+          el.textContent = Math.floor(target*eased) + suffix;
+          if(p<1) requestAnimationFrame(tick);
+          else el.textContent = target + suffix;
+        }
+        requestAnimationFrame(tick);
+        countObserver.unobserve(el);
+      });
+    }, { threshold: .3 });
+    counters.forEach(c => countObserver.observe(c));
+
+    let activeFilter = 'all';
+    const search = document.getElementById('certSearch');
+    const certs = [...document.querySelectorAll('.cert')];
+    const filterBtns = [...document.querySelectorAll('.filter-btn')];
+    function applyCertFilter(){
+      const q = search.value.trim().toLowerCase();
+      certs.forEach(c => {
+        const matchCat = activeFilter === 'all' || c.dataset.cat === activeFilter;
+        const matchText = c.textContent.toLowerCase().includes(q);
+        c.classList.toggle('hidden', !(matchCat && matchText));
+      });
+    }
+    filterBtns.forEach(btn => btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeFilter = btn.dataset.filter;
+      applyCertFilter();
+    }));
+    search.addEventListener('input', applyCertFilter);
+
+    document.getElementById('copyEmail').addEventListener('click', async (e) => {
+      const email = 'ahmed@abdelwahed.me';
+      try {
+        await navigator.clipboard.writeText(email);
+        const old = e.currentTarget.textContent;
+        e.currentTarget.textContent = 'Copied ✓';
+        setTimeout(() => e.currentTarget.textContent = old, 1400);
+      } catch {
+        window.location.href = 'mailto:' + email;
+      }
+    });
+
+    const navLinks = [...document.querySelectorAll('.nav a')];
+    const sections = navLinks.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+    const spy = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + entry.target.id));
+        }
+      });
+    }, {rootMargin:'-35% 0px -55% 0px'});
+    sections.forEach(s => spy.observe(s));
+
+    document.getElementById('menuBtn').addEventListener('click', () => {
+      const links = ['skills','experience','projects','certifications','contact'];
+      const destination = prompt('Jump to: ' + links.join(', '), 'experience');
+      if (destination && links.includes(destination.toLowerCase())) {
+        document.getElementById(destination.toLowerCase()).scrollIntoView({behavior:'smooth'});
+      }
+    });
+  </script>
+</body>
+</html>
